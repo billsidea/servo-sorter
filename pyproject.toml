@@ -9,7 +9,7 @@ dependencies = [
     "adafruit-circuitpython-servokit>=1.3.24",
 ]
 authors = [
-  { name="Bill Blaney", email="billsidea@gmail.com" },
+  { name="William Blaney", email="billsidea@gmail.com" },
 ]
 description = "A utility that uses commonly available, low-cost RC/hobbyist servos to provide a tiered sorting function"
 readme = "README.md"
