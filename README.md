@@ -13,7 +13,7 @@
 # Overview and Terminology
 <img width="420" height="500" alt="SortingMachineSmaller" src="https://github.com/user-attachments/assets/a95718f1-c8e4-43ed-80e4-d5efb9eb689e" />
 
-This solution requires a controlling program to detect/declare an object's "sort attribute" prior to sending an object into the sorter. A simple example to consider is sorting marbles using a sort attribute of color. Your controlling program would detect the marble's color and tell that color to ServoSorter. ServoSorter would then configure the servos accordingly prior to the marble being dropped into the sorting device. The marble would then drop into bin assigned to that color.
+This solution requires a controlling program to detect/declare an object's "sort attribute" prior to sending an object into the sorter. A simple example to consider is sorting marbles using a sort attribute of color. Your controlling program would detect the marble's color and tell that color to ServoSorter. ServoSorter would then configure the servos accordingly prior to the marble being dropped into the sorting device. The marble would then drop into the bin assigned to that color.
 
 Each servo is installed in a housing ("chute") and attached to a deflector arm ("flap") that directs an object one way ("main") or another ("alt"). The process requires gravity to move the object through the process. Once the object goes through the servo's chute, the object is sent either into another chute or into its final, sorted location ("bin"). Each chute is organized into a tier ("layer"). Each layer doubles in size compared to the prior layer.
 
@@ -116,7 +116,7 @@ ServoSorter operates on a Python-supported device (e.g. a Raspberry Pi running t
 
 It requires the attachment of one or more 16-channel PCA9685 PWM/Servo drivers (each of which can manage up to 16 servos). The PCA9685 is required because a typical device like a Raspberry Pi cannot provide enough power to reliably actuate servos. PCA9685 devices each leverage their own power supply (which need to be purchased separately) and can be chained together, so the solution requires that only a single PCA9685 be connected to your controlling device. The PCA9685 utilizes i2c for communication, so your device must also support i2c. You can buy the PCA9685 directly from Adafruit [here](https://www.adafruit.com/product/815). You can also get generic versions from [Micro Center](https://www.microcenter.com/product/639725/inland-ks006516-channel-12-bit-pwm-servo-driver-i2c-interface) or [Amazon](https://a.co/d/03u5w4rV) with the headers already attached. I've successfully used [this power supply](https://a.co/d/0j9ds8GN) to power the PCA9685, but there are many options.
 
-You need to use only positional rotation servos (e.g. 90-degree, 180-degree). Continuous rotation servos and linear servos are not supported. I recommend buying servos with clutches (even though they are a little more expensive). I've used [this one from Maker's Supply](https://us.store.bambulab.com/products/9g-servo-motor-with-clutch-protection?id=42123031019656) (make sure to get the positional one, NOT the continuous rotation one). They get cheaper if you buy them in bulk. A servo with a clutch will better handle the scenario where your servo gets jammed/stalled and will adjust accordingly. The cheaper servos (I've used [these from Micro Center](https://www.microcenter.com/product/613883/inland-ks0209-blue-9g-servo-motor) and [these from Amazon](https://a.co/d/03cdrJ0h)) will just burn out if they get jammed/stalled for any significant amount of time, which could lead to bigger issues (including spiked power consumption and even potential fires). If you go witht the cheaper servos, you might consider adding a fuse to your solution.
+You need to use only positional rotation servos (e.g. 90-degree, 180-degree). Continuous rotation servos and linear servos are not supported. I recommend buying servos with clutches (even though they are a little more expensive). I've used [this one from Maker's Supply](https://us.store.bambulab.com/products/9g-servo-motor-with-clutch-protection?id=42123031019656) (make sure to get the positional one, NOT the continuous rotation one). They get cheaper if you buy them in bulk. A servo with a clutch will better handle the scenario where your servo gets jammed/stalled and will adjust accordingly. The cheaper servos (I've used [these from Micro Center](https://www.microcenter.com/product/613883/inland-ks0209-blue-9g-servo-motor) and [these from Amazon](https://a.co/d/03cdrJ0h)) will just burn out if they get jammed/stalled for any significant amount of time, which could lead to bigger issues (including spiked power consumption and even potential fires). If you go with the cheaper servos, you might consider adding a fuse to your solution.
 
 # Other Requirements
 
@@ -163,6 +163,12 @@ The following are being considered for future enhancements:
 - Feature to "re-do" servo movements in order in case the sorted object gets stuck in the sorting device (in an attempt to free/dislodge the object).
 
 - Allow "locking" of bin assignments.
+
+- Arduino support (Arduino language based on C++)
+
+- Microcontroller support (MicroPython or C/C++)
+
+- [CyberBrick support](https://makerworld.com/en/cyberbrick) (Bambu Lab ecosystem)
 
 # Additional Information
 Here is a full list of valid i2c addresses that can be provided for the PCA9685 address values (controllable per driver by using soldered jumpers on each PCA9685 board):
