@@ -11,7 +11,7 @@
 - [Additional Information](#additional-information)
 
 # Overview and Terminology
-![Sorting Machine](Assets/SortingMachine.gif)
+<img width="420" height="500" alt="SortingMachineSmaller" src="https://github.com/user-attachments/assets/a95718f1-c8e4-43ed-80e4-d5efb9eb689e" />
 
 This solution requires a controlling program to detect/declare an object's "sort attribute" prior to sending an object into the sorter. A simple example to consider is sorting marbles using a sort attribute of color. Your controlling program would detect the marble's color and tell that color to ServoSorter. ServoSorter would then configure the servos accordingly prior to the marble being dropped into the sorting device. The marble would then drop into bin assigned to that color.
 
@@ -116,7 +116,8 @@ You need to use only positional rotation servos (e.g. 90-degree, 180-degree). Co
 
 # Other Requirements
 
-![Servo Numbering](Assets/ServoNumbering.jpg)
+<img width="1283" height="1525" alt="ServoNumbering" src="https://github.com/user-attachments/assets/c43d76b2-3b3e-448c-b12d-194e7fbc10cd" />
+
 
 At present, servos must be organized into COMPLETE layers and in order by servo number from right to left. In the image above, you see a sorter with seven servos showing you the order in which the servos need to be configured. With each layer doubling the number of servos from the previous layer, the allowed number of servos is 1, 3, 7, 15, 31, 63, 127, 255, or 511. The maximum number of PCA9685 drivers supported by the ServoKit library is 62. With each driver supporting up to 16 servos, the theoretical maximum number of servos is 992, but the layer requirements described above cap the max number at 511. This equates to a maximum number of "bins" of 512 and a maximum number of drivers of 32.
 
