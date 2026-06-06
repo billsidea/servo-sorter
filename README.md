@@ -13,7 +13,7 @@
 # Overview and Terminology
 <img width="420" height="500" alt="SortingMachineSmaller" src="https://github.com/user-attachments/assets/a95718f1-c8e4-43ed-80e4-d5efb9eb689e" />
 
-This solution requires a controlling program to detect/declare an object's "sort attribute" prior to sending an object into the sorter. A simple example to consider is sorting marbles using a sort attribute of color. Your controlling program would detect the marble's color and tell that color to ServoSorter. ServoSorter would then configure the servos accordingly prior to the marble being dropped into the sorting device. The marble would then drop into bin assigned to that color.
+This solution requires a controlling program to detect/declare an object's "sort attribute" prior to sending an object into the sorter. A simple example to consider is sorting marbles using a sort attribute of color. Your controlling program would detect the marble's color and tell that color to ServoSorter. ServoSorter would then configure the servos accordingly prior to the marble being dropped into the sorting device. The marble would then drop into the bin assigned to that color.
 
 Each servo is installed in a housing ("chute") and attached to a deflector arm ("flap") that directs an object one way ("main") or another ("alt"). The process requires gravity to move the object through the process. Once the object goes through the servo's chute, the object is sent either into another chute or into its final, sorted location ("bin"). Each chute is organized into a tier ("layer"). Each layer doubles in size compared to the prior layer.
 
