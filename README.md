@@ -49,7 +49,7 @@ Instantiate the ServoSorter class with the following arguments:
 - **servo_count** - the number of servos your sorting process is using (the number of available bins will always be equal to the servo_count + 1)
 - **driver_i2c_addresses** - a list of i2c addresses associated to your PCA9685 servo drivers
 - **actuation_ranges** - a "list of lists" containing the actuation ranges (e.g. 90, 180, etc. depending on what types of micro servos you're using)
-- **main_angles** - a "list of lists" containing the "main" angle values for each sevo being used
+- **main_angles** - a "list of lists" containing the "main" angle values for each servo being used
 - **alt_angles** - a "list of lists" containing the "alt" angle values for each servo being used
 - (optional) **servo_sleep_duration_seconds** - the number of seconds between each servo movement; defaults to 0; partial seconds are allowed (e.g. .5)
 - (optional) **avoid_unnecessary_servo_movement** - determines whether to move only the servos necessary for the specified bin (True) or move all servos (False); defaults to True
@@ -119,7 +119,7 @@ You need to use only positional rotation servos (e.g. 90-degree, 180-degree). Co
 <img width="1283" height="1525" alt="ServoNumbering" src="https://github.com/user-attachments/assets/c43d76b2-3b3e-448c-b12d-194e7fbc10cd" />
 
 
-At present, servos must be organized into COMPLETE layers and in order by servo number from right to left. In the image above, you see a sorter with seven servos showing you the order in which the servos need to be configured. With each layer doubling the number of servos from the previous layer, the allowed number of servos is 1, 3, 7, 15, 31, 63, 127, 255, or 511. The maximum number of PCA9685 drivers supported by the ServoKit library is 62. With each driver supporting up to 16 servos, the theoretical maximum number of servos is 992, but the layer requirements described above cap the max number at 511. This equates to a maximum number of "bins" of 512 and a maximum number of drivers of 32.
+At present, servos must be organized into COMPLETE layers and in order by servo number from left to right. In the image above, you see a sorter with seven servos showing you the order in which the servos need to be configured. With each layer doubling the number of servos from the previous layer, the allowed number of servos is 1, 3, 7, 15, 31, 63, 127, 255, or 511. The maximum number of PCA9685 drivers supported by the ServoKit library is 62. With each driver supporting up to 16 servos, the theoretical maximum number of servos is 992, but the layer requirements described above cap the max number at 511. This equates to a maximum number of "bins" of 512 and a maximum number of drivers of 32.
 
 Servos must be attached to a driver "in order". PCA9685 driver boards may label the servo connectors 0-15. So, the first servo must be attached to slot 0, the second servo to slot 1, the third servo to slot 2, etc. Because multiple servo drivers (the i2c addresses of which are passed into ServoSorter) can be used, it needs to know which servos are connected to which drivers. This is accomplished via the "array of arrays" passed in for actuation ranges, main angles, and alt angles when instantiating the ServoSorter class. Values in the first array relate to servos attached to the first driver. Values in the second array related to servos attached to the second driver, and so on. It is ok not to "fill up" a driver with servos, but the rules above must be adhered to.
 
