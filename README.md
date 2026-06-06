@@ -58,7 +58,9 @@ Instantiate the ServoSorter class with the following arguments:
 import servo_sorter
 
 # assumes you have 7 servos, three attached to the first driver, four attached to the second driver
-# the first driver's address is 0x40 (which is the board's default) and the second driver's address is 0x41 (accomplished via soldering a jumper on the board)
+# the first driver's address is 0x40 (which is the board's default)
+# the second driver's address is 0x41 (accomplished via soldering a jumper on the board)
+# all servos have a 90 degree actuation range except the second one, which has a 180 degree actuation range
 my_sorter = servo_sorter.ServoSorter("TestSorter", 7, [0x40, 0x41], \
                      [[90, 180, 90], [90, 90, 90, 90]], \
                      [[20,  24, 16], [12, 14, 10, 12]], \
