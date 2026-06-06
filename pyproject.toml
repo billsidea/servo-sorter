@@ -23,4 +23,6 @@ license-files = ["LICEN[CS]E*"]
 
 [project.urls]
 Homepage = "https://github.com/billsidea/servo-sorter"
+Documentation = "https://github.com/billsidea/servo-sorter/blob/main/README.md"
+Repository = "https://github.com/billsidea/servo-sorter"
 Issues = "https://github.com/billsidea/servo-sorter/issues"
