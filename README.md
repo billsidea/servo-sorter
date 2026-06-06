@@ -164,6 +164,12 @@ The following are being considered for future enhancements:
 
 - Allow "locking" of bin assignments.
 
+- Arduino support (Arduino language based on C++)
+
+- Microcontroller support (MicroPython or C/C++)
+
+- [CyberBrick support](https://makerworld.com/en/cyberbrick) (Bambu Lab ecosystem)
+
 # Additional Information
 Here is a full list of valid i2c addresses that can be provided for the PCA9685 address values (controllable per driver by using soldered jumpers on each PCA9685 board):
 ```text
