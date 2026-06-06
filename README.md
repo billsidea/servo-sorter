@@ -90,7 +90,7 @@ If your logic wants to reset all bin assignments, use the <code>reset_all_bins</
 reset_all_bins_successful_boolean = my_sorter.reset_all_bins()
 ```
 
-Bin assignments can be seen in the JSON file created by servo-sorter. The filename will be formatted as "[sorter_name]_servosorter_db.json" and it will look something like this:
+Bin assignments can be seen in the JSON file created by servo-sorter. The filename will be formatted as *[sorter_name].servosorter_db.json* and it will look something like this:
 ```json
 {
     "bins": [
