@@ -214,7 +214,6 @@ class ServoSorter:
                 self._save_db()
             else:
                 # no more available bins
-                # consider doing a "mix" lookup (for current filament type) here, as it would be better than "DEFAULT"
                 logger.debug("No more available bins. Moving to DEFAULT bin.")
                 selected_bin_number = 1 # must default to DEFAULT
                 selected_bin_index = 0
