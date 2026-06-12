@@ -148,7 +148,7 @@ kit.servo[servo_slot].angle = 0 # try different angle values between 0 and the s
 
 # 3D-Printed Assets
 
-You can use [this model](https://makerworld.com/en/models/2878141-flush-mount-servo-enclosure-embedded-servo-horns#profileId-3214191) as a starting point for your project's servo housings and flaps/arms. I will soon be publishing another model that looks more like the one in my video above and I will update this README once I do that.
+I have published [this model](https://makerworld.com/en/models/2916655-automated-servo-sorting-device-with-free-software#profileId-3262695), which is basically what's shown in the above pictures/video. You can also use [this model](https://makerworld.com/en/models/2878141-flush-mount-servo-enclosure-embedded-servo-horns#profileId-3214191) as a starting point if you want to build your own servo housings and flaps/arms.
 
 # Future Plans
 
