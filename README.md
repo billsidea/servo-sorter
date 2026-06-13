@@ -43,7 +43,7 @@ ServoSorter is available as a Python package on PyPI. To install:
     ```
 # Usage
 
-Instantiate the ServoSorter class with the following arguments:
+In your controlling Python logic, instantiate the ServoSorter class with the following arguments:
 
 - **sorter_name** - a unique name of your choice to distinguish it from any other ServoSorter-consuming processes
 - **servo_count** - the number of servos your sorting process is using (the number of available bins will always be equal to the servo_count + 1)
