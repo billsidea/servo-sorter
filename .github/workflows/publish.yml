@@ -1,7 +1,10 @@
 name: Publish Python 🐍 distribution 📦 to PyPI
 
-on: push
-
+on:
+  push:
+    tags:
+      - "v*" # Triggers the workflow when a tag starting with 'v' is pushed
+  
 jobs:
   build:
     name: Build distribution 📦
@@ -14,7 +17,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v6
       with:
-        python-version: "3.x"
+        python-version: "3.11"
     - name: Install pypa/build
       run: >-
         python3 -m
@@ -38,7 +41,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: pypi
-      url: https://pypi.org/p/<package-name>  # Replace <package-name> with your PyPI project name
+      url: https://pypi.org/p/servo-sorter
     permissions:
       id-token: write  # IMPORTANT: mandatory for trusted publishing
 
