@@ -3,6 +3,8 @@ import math
 import time
 import json
 import logging
+import platformdirs
+from pathlib import Path
 
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())
@@ -54,6 +56,8 @@ class ServoSorter:
     # class variables (shared by all instances)
     servo_driver_channels = 16
 
+    PACKAGE_NAME = "servo_sorter"
+
     # initialization of class
     def __init__(self, sorter_name, servo_count, driver_i2c_addresses, actuation_ranges, main_angles, alt_angles, \
                  servo_sleep_duration_seconds=0, avoid_unnecessary_servo_movement=True):
@@ -74,12 +78,15 @@ class ServoSorter:
         
         # open / initialize json file as database
         self.sorter_db_filename = str(sorter_name) + "_servosorter_db.json"
+        self.sorter_db_path = Path(platformdirs.user_config_dir(PACKAGE_NAME)) / self.sorter_db_filename
+        if not self.sorter_db_path.exists():
+            self.sorter_db_path.parent.mkdir(parents=True, exist_ok=True)
         try:
-            with open(self.sorter_db_filename, 'r', encoding='utf-8') as f:
+            with open(self.sorter_db_path, 'r', encoding='utf-8') as f:
                 self.json_db = json.load(f)
         except FileNotFoundError:
             # the file is not there, create it with some defaults
-            with open(self.sorter_db_filename, 'w', encoding='utf-8') as f:
+            with open(self.sorter_db_path, 'w', encoding='utf-8') as f:
                 self.json_db = {"bins": ["DEFAULT"]}
                 json.dump(self.json_db, f, indent=4, ensure_ascii=False)
             
@@ -187,7 +194,7 @@ class ServoSorter:
         return True
     
     def _save_db(self):
-        with open(self.sorter_db_filename, 'w', encoding='utf-8') as f:
+        with open(self.sorter_db_path, 'w', encoding='utf-8') as f:
             json.dump(self.json_db, f, indent=4, ensure_ascii=False)
         
     def retrieve_or_assign_bin_for_sort_attribute(self, sort_attribute):
