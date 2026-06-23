@@ -78,7 +78,7 @@ class ServoSorter:
         
         # open / initialize json file as database
         self.sorter_db_filename = str(sorter_name) + "_servosorter_db.json"
-        self.sorter_db_path = Path(platformdirs.user_config_dir(PACKAGE_NAME)) / self.sorter_db_filename
+        self.sorter_db_path = Path(platformdirs.user_config_dir(self.PACKAGE_NAME)) / self.sorter_db_filename
         if not self.sorter_db_path.exists():
             self.sorter_db_path.parent.mkdir(parents=True, exist_ok=True)
         try:
