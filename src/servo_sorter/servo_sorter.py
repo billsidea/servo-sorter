@@ -219,6 +219,7 @@ class ServoSorter:
                 selected_bin_number = selected_bin_index + 1
                 self.json_db["bins"][selected_bin_index] = sort_attribute
                 self._save_db()
+                assigned_bin = True
             else:
                 # no more available bins
                 logger.debug("No more available bins. Moving to DEFAULT bin.")
@@ -227,8 +228,11 @@ class ServoSorter:
                 
         return found_bin, assigned_bin, selected_bin_number, self.json_db["bins"][selected_bin_index]
     
-    def move_servos_to_sort_attribute_bin(self, sort_attribute):
+    def move_servos_to_sort_attribute_bin(self, sort_attribute, secondary_sort_attribute="DEFAULT"):
         found_bin, assigned_bin, selected_bin_number, selected_bin_sort_attribute = self.retrieve_or_assign_bin_for_sort_attribute(sort_attribute)
+        # if primary sort attribute is not found and cannot be assigned, try using the secondary attribute, if provided
+        if(selected_bin_number == 1 and secondary_sort_attribute != "DEFAULT"):
+            found_bin, assigned_bin, selected_bin_number, selected_bin_sort_attribute = self.retrieve_or_assign_bin_for_sort_attribute(secondary_sort_attribute)
         actual_bin_number = self.move_servos_directly_to_bin(selected_bin_number)
         return found_bin, assigned_bin, actual_bin_number, self.json_db["bins"][actual_bin_number - 1]
     
